@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <!-- Fryser-ikon i midten -->
+    <ImageView
+        android:id="@+id/splashIcon"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:src="@mipmap/fryser_foreground"
+        android:layout_centerInParent="true"
+        android:contentDescription="@string/app_name" />
+
+    <!-- Udviklertekst nederst til højre -->
+    <TextView
+        android:id="@+id/developerText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Udviklet af Søren Lindvig Jensen"
+        android:textStyle="bold"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="56dp" />
+</RelativeLayout>
