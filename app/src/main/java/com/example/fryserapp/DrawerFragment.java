@@ -50,51 +50,51 @@ public class DrawerFragment extends Fragment {
         recycler.setLayoutManager(new LinearLayoutManager(getContext()));
         recycler.setAdapter(adapter = new FreezerAdapter(item -> showEditDeleteDialog(item)));
 
-        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
-
-            @Override
-            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
-                return false; // Vi flytter ikke elementer, kun swipe
-            }
-
-            @Override
-            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
-                // Swipe afsluttet → vis skraldespandsikon til bekræftelse
-                int position = viewHolder.getAdapterPosition();
-                viewHolder.itemView.setTranslationX(-200); // flyt lidt for visuel feedback
-            }
-
-            @Override
-            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
-                                    float dX, float dY, int actionState, boolean isCurrentlyActive) {
-
-                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
-
-                // Tegn rød baggrund med skraldespandsikon
-                View itemView = viewHolder.itemView;
-                Paint paint = new Paint();
-                paint.setColor(Color.RED);
-
-                if (dX < 0) { // Swiper til venstre
-                    c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
-                            (float) itemView.getRight(), (float) itemView.getBottom(), paint);
-
-                    Drawable icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete);
-                    if (icon != null) {
-                        int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-                        int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
-                        int iconRight = itemView.getRight() - iconMargin;
-                        int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
-                        int iconBottom = iconTop + icon.getIntrinsicHeight();
-                        icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
-                        icon.draw(c);
-                    }
-                }
-            }
-        };
-
-        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
-        itemTouchHelper.attachToRecyclerView(recycler);
+//        ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
+//
+//            @Override
+//            public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
+//                return false; // Vi flytter ikke elementer, kun swipe
+//            }
+//
+//            @Override
+//            public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+//                // Swipe afsluttet → vis skraldespandsikon til bekræftelse
+//                int position = viewHolder.getAdapterPosition();
+//                viewHolder.itemView.setTranslationX(-200); // flyt lidt for visuel feedback
+//            }
+//
+//            @Override
+//            public void onChildDraw(Canvas c, RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder,
+//                                    float dX, float dY, int actionState, boolean isCurrentlyActive) {
+//
+//                super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);
+//
+//                // Tegn rød baggrund med skraldespandsikon
+//                View itemView = viewHolder.itemView;
+//                Paint paint = new Paint();
+//                paint.setColor(Color.RED);
+//
+//                if (dX < 0) { // Swiper til venstre
+//                    c.drawRect((float) itemView.getRight() + dX, (float) itemView.getTop(),
+//                            (float) itemView.getRight(), (float) itemView.getBottom(), paint);
+//
+//                    Drawable icon = ContextCompat.getDrawable(requireContext(), R.drawable.ic_delete);
+//                    if (icon != null) {
+//                        int iconMargin = (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+//                        int iconLeft = itemView.getRight() - iconMargin - icon.getIntrinsicWidth();
+//                        int iconRight = itemView.getRight() - iconMargin;
+//                        int iconTop = itemView.getTop() + (itemView.getHeight() - icon.getIntrinsicHeight()) / 2;
+//                        int iconBottom = iconTop + icon.getIntrinsicHeight();
+//                        icon.setBounds(iconLeft, iconTop, iconRight, iconBottom);
+//                        icon.draw(c);
+//                    }
+//                }
+//            }
+//        };
+//
+//        ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
+//        itemTouchHelper.attachToRecyclerView(recycler);
 
 
         loadItems();
